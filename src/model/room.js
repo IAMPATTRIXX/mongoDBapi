@@ -3,20 +3,20 @@ const mongoose = require('mongoose')
 const roomSchema = new mongoose.Schema({
     type: {
         type: String,
-        required: true
+        required: true,
     },
     room: {
         type: String,
-        required: true
+        required: false,
     },
     amount: {
         type: Number,
-        required: true,
+        required: false,
         
     },
     prize: {
         type: Number,
-        required: true,
+        required: false,
     },
     name: {
         type: String,
