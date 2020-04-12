@@ -25,7 +25,7 @@ router.post('/hotelbook/users', async (req, res, next) => {
         res.status(201).json({message : 'User added !', user, token});
     }
     catch(error){
-        res.status(401).json({error :  error.message});
+        res.status(500).json({error :  error.message});
     }
 });
 
@@ -106,14 +106,6 @@ router.put('/hotelbook/room/:id', async(req,res) => {
     }
 })
 
-router.delete('/hotelbook/room/:id', async (req,res) => {
-    try {
-        const t = await Room.findByIdAndDelete(req.params.id)
-            res.status(200).json({message: 'room Deleted!!'})
-    } catch (error) {
-        res.status(500).json({error: 'DELETE::transaction not found'})
-    }
-})
 
 router.get('/hotelbook/room/:id', async(req,res,next) => {
     try {
