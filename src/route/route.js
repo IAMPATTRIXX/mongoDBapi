@@ -88,10 +88,6 @@ router.get('/hotelbook/room', async (req,res,next) => {
 
 router.put('/hotelbook/room/:id', async(req,res) => {
     const update_t= {
-        // type : req.body.type,
-        // room: req.body.room,
-        // amount: Number(req.body.amount),
-        // prize : Number(req.body.prize),
         name : req.body.name,
         surname : req.body.surname,
         id : req.body.id,
@@ -145,22 +141,7 @@ router.get('/hotelbook/room/:id', async(req,res,next) => {
 // })
 
 router.post('/hotelbook/room', async (req,res) => {
-    // const type = req.body.type
-    // const room = req.body.room
-    // const amount = req.body.amount
-    // const prize = req.body.prize
-    // const t = new Room(req.body)
-
-    const type = req.body.type
-    const room = req.body.room
-    const amount = req.body.amount
-    const prize = req.body.prize
-    // const name = req.body.name
-    // const surname = req.body.surname
-    // const id = req.body.id
-    const status = false
     const t = new Room(req.body)
-
     try {
         await t.save()
         res.status(200).json(t)
