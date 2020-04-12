@@ -19,8 +19,9 @@ const userSchema = new mongoose.Schema({
     tokens : [{
         token : {type : String, required : true}
     }],
-    created : {type : Date, required : true, default : Date.now},
-    updated : {type : Date, required : true, default : Date.now}
+    amountin : {type : Number, required : true},
+    checkin : {type : String, required : true},
+    checkout : {type : String, required : true}
 });
 
 userSchema.pre('save', async function(next){
