@@ -35,10 +35,10 @@ router.post('/hotelbook/users/login', async (req, res, next) => {
         const user = await User.findByCredentials(email, password);
         if(!user)res.status(401).json({error : 'Login failed !'});
         const token = await user.generateAuthToken();
-        res.status(200).json({token});
+        res.status(201).json({token});
     }
     catch(error){
-        res.status(400).json({error : error.message});
+        res.status(500).json({error : error.message});
     }
 });
 
