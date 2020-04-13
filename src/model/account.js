@@ -4,20 +4,20 @@ const jwt = require('jsonwebtoken');
 const validator = require('validator')
 
 const userSchema = new mongoose.Schema({
-    name : {type : String, required : true, trim : true},
-    surname : {type : String, required : true, trim : true},
+    name : {type : String, required : false, trim : true},
+    surname : {type : String, required : false, trim : true},
     number : {type : String, required : false, minlength : 10},
     id : {type : String, required : false, minlength : 13},
-    email : {type : String, required : true, unique : true, lowercase : true,
+    email : {type : String, required : false, unique : true, lowercase : true,
             validator : (value) => {
                 if(!validator.isEmail()){
                     throw new Error('Invalid email !');
                 }
             }},
-    password : {type : String, required : true, minlength : 6},
+    password : {type : String, required : false, minlength : 6},
     admin : {type : Boolean, default : false},
     tokens : [{
-        token : {type : String, required : true}
+        token : {type : String, required : false}
     }],
     amountin : {type : Number, required : false},
     checkin : {type : String, required : false},
