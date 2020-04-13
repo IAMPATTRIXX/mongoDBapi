@@ -6,10 +6,7 @@ const Room = require('../model/room')
 const User = require('../model/account');
 const cors = require('cors');
 
-var corsOptions = {
-    origin: 'https://hotel-booking-project-d6271.web.app/',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+
 
 //MongoDB Atlas connection setting
 const mongoose = require('mongoose')
@@ -24,7 +21,7 @@ db.once('open', () => console.log('Database CONNECTED!!!'))
 
 // User endpoint
 
-router.post('/hotelbook/users',cors(corsOptions), async (req, res,) => {
+router.post('/hotelbook/users', async (req, res,) => {
     try {
         const user = new User(req.body);
         await user.save();

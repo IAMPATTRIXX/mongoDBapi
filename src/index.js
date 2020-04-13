@@ -10,19 +10,6 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
-
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://hotel-booking-project-d6271.web.app/')
-  res.header('Access-Control-Allow-Credentials', true)
-  res.header('Access-Control-Allow-Methods','POST, GET, PUT, PATCH, DELETE, OPTIONS')
-  res.header('Access-Control-Allow-Headers','Content-Type, Option, Authorization')
-  return next()
-})
-
 //middleware section
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
