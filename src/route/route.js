@@ -4,20 +4,27 @@ const router = express.Router()
 const auth = require('../middleware/auth')
 const Room = require('../model/room')
 const User = require('../model/account');
+const cors = require('cors');
+
+var corsOptions = {
+    origin: 'https://hotel-booking-project-d6271.web.app/',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 //MongoDB Atlas connection setting
 const mongoose = require('mongoose')
 const connStr = process.env.DATABASE_URL.replace('<password>', process.env.DATABASE_PWD)
 mongoose.connect(connStr, { useNewUrlParser: true,
                             useUnifiedTopology: true,
-                            useFindAndModify: false })
+                            useFindAndModify: false,
+                            useCreateIndex: true })
 const db = mongoose.connection
 db.on('error', () => console.log('Connection ERROR!!!'))
 db.once('open', () => console.log('Database CONNECTED!!!'))
 
 // User endpoint
 
-router.post('/hotelbook/users', async (req, res, next) => {
+router.post('/hotelbook/users',cors(corsOptions), async (req, res,) => {
     try {
         const user = new User(req.body);
         await user.save();
@@ -74,6 +81,25 @@ router.post('/hotelbook/users/logoutall', auth, async (req, res, next) => {
     }
 });
 
+router.put('/hotelbook/users/edit/:id',auth,async(req,res)=>{
+    const user = req.user
+    const update_t = {
+        number : req.body.number,
+        id : req.body.id,
+        amountin : req.body.amountin,
+        checkin : req.body.checkin,
+        checkout : req.body.checkout
+    }
+    try{
+        const t = await User.findByIdAndUpdate(req.params.id,update_t,{new:true})
+        if(!t)
+            res.status(201).send({error:'Update::transaction not found'})
+        user.save()
+        res.status(200).send(t)
+    }catch(err){
+        res.status(201).send({eror:err.message})
+    }
+})
 
 // rooms endpoint
 
@@ -88,9 +114,6 @@ router.get('/hotelbook/room', async (req,res,next) => {
 
 router.put('/hotelbook/room/:id', async(req,res) => {
     const update_t= {
-        name : req.body.name,
-        surname : req.body.surname,
-        id : req.body.id,
         status : true
 
     }
