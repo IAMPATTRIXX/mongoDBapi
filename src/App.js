@@ -31,7 +31,7 @@ const RouterV2 = require('./route/route')
 app.use(RouterV2)
 
 const PORT = process.env.PORT || 3000
-const HOSTNAME = process.env.HOSTNAME
-app.listen(PORT, HOSTNAME, () => {
-    console.log('Server is listenning at: '+HOSTNAME+': '+PORT)
+
+app.listen(PORT,  () => {
+    console.log('Server is listenning at: : '+PORT)
 })
