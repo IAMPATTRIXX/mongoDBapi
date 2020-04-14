@@ -91,7 +91,7 @@ router.get('/hotelbook/users/me',auth,(req,res,next) => {
     }
 })
 
-router.post('/hotelbook/users/logout', auth, async (req, res, next) => {
+router.get('/hotelbook/users/logout', auth, async (req, res, next) => {
     const user = req.user;
     const currToken = req.token;
     try{
