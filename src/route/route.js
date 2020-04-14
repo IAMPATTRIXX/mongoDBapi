@@ -37,7 +37,7 @@ router.get('/hotelbook/users/:id', async(req,res,next) => {
     try {
         const t = await User.findById(req.params.id)
         if (!t) {
-             res.status(404).json({error:'room not found'})
+             res.status(404).json({error:'users not found'})
         }
         res.status(202).json(t)
     } catch (error) {
@@ -45,7 +45,7 @@ router.get('/hotelbook/users/:id', async(req,res,next) => {
     }
 })
 
-router.put('/hotelbook/room/:id', async(req,res) => {
+router.put('/hotelbook/users/:id', async(req,res) => {
     const update_t= {
         
         number : req.body.number,
