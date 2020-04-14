@@ -33,6 +33,7 @@ router.post('/hotelbook/users', async (req, res,) => {
     }
 });
 
+
 router.post('/hotelbook/users/login', async (req, res, next) => {
     try{
         const { email, password } = req.body;
@@ -47,8 +48,12 @@ router.post('/hotelbook/users/login', async (req, res, next) => {
 });
 
 router.get('/hotelbook/users/me', auth, (req, res, next) => {
-    const user = req.user;
-    res.status(201).json(user);
+    const user = req.user
+    try{
+        res.status(200).send({user})
+    }catch(error){
+        res.status(201).send({error:error.message})
+    }
 });
 
 router.post('/hotelbook/users/logout', auth, async (req, res, next) => {
