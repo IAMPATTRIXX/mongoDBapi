@@ -33,7 +33,7 @@ router.post('/hotelbook/users', async (req, res,) => {
     }
 });
 
-router.get('/hotelbook/users/:id', async(req,res,next) => {
+router.get('/hotelbook/users/findid/:id', async(req,res,next) => {
     try {
         const t = await User.findById(req.params.id)
         if (!t) {
@@ -82,14 +82,14 @@ router.post('/hotelbook/users/login', async (req, res, next) => {
     }
 });
 
-router.get('/hotelbook/users/me', auth, (req, res, next) => {
+router.get('/hotelbook/users/me',auth,(req,res,next) => {
     const user = req.user
     try{
         res.status(200).send({user})
     }catch(error){
         res.status(201).send({error:error.message})
     }
-});
+})
 
 router.post('/hotelbook/users/logout', auth, async (req, res, next) => {
     const user = req.user;
@@ -106,7 +106,7 @@ router.post('/hotelbook/users/logout', auth, async (req, res, next) => {
     }
 });
 
-router.get('/hotelbook/user/getall', async (req,res,next) => {
+router.get('/hotelbook/users/getall', async (req,res,next) => {
     try{
         const user = await User.find()
         res.status(200).json(user)
