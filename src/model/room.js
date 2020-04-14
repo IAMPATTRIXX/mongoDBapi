@@ -38,7 +38,7 @@ const roomSchema = new mongoose.Schema({
 // findbytype not finish
 // roomSchema.statics.findByType = async (type) => {
 //     try{
-//         const t = await User.findOne({type});
+//         const t = await Room.findOne({type});
 //         if(!t)throw new Error({message : "Room not found !"});
 //         return t;
 //     }

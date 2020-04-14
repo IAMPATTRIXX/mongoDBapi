@@ -189,8 +189,7 @@ router.get('/hotelbook/room/:id', async(req,res,next) => {
 // findbytype not finish
 // router.get('/hotelbook/room/:type', async(req,res,next) => {
 //     try {
-//         const {type} = req.params
-//         const t = await Room.findByType(type)
+//         const t = await Room.findByType(req.params.type)
 //         if (!t) {
 //              res.status(404).json({error:'room not found'})
 //         }
