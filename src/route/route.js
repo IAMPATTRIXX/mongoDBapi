@@ -71,6 +71,15 @@ router.post('/hotelbook/users/logout', auth, async (req, res, next) => {
     }
 });
 
+router.get('/hotelbook/user/getall', async (req,res,next) => {
+    try{
+        const user = await User.find()
+        res.status(200).json(user)
+    } catch(error){
+        res.status(500).json({error: error.message})
+    }
+})
+
 router.post('/hotelbook/users/logoutall', auth, async (req, res, next) => {
     const user = req.user;
     try{
