@@ -50,7 +50,6 @@ router.put('/hotelbook/users/:id', async(req,res) => {
         
         number : req.body.number,
         id : req.body.id,
-        password : req.body.password,
         amountin : req.body.amountin,
         checkin : req.body.checkin,
         checkout : req.body.checkout,
