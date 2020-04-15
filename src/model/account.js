@@ -19,12 +19,12 @@ const userSchema = new mongoose.Schema({
     tokens : [{
         token : {type : String, required : true}
     }],
-    amount: [{
-            amountin : {type : Number, required : false},
-            checkin : {type : String, required : false},
-            checkout : {type : String, required : false},
-            room:{type : String, required : false},
-    }]
+    
+    amountin : {type : Number, required : false},
+    checkin : {type : String, required : false},
+    checkout : {type : String, required : false},
+    room:{type : String, required : false},
+    
 });
 
 userSchema.pre('save', async function(next){
