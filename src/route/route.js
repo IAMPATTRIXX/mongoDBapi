@@ -48,6 +48,8 @@ router.get('/hotelbook/users/findid/:id', async(req,res,next) => {
 router.put('/hotelbook/users/edit/:id', async(req,res) => {
     const update_t= {
         
+        name : req.body.name,
+        surname : req.body.surname,
         number : req.body.number,
         id : req.body.id,
         amountin : req.body.amountin,

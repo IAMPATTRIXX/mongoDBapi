@@ -7,7 +7,7 @@ const cors = require('cors')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('Yeah Fucking Fuckkkkkkkkkk Fuck Fuckkkkkkkkkkkkkkkk Fuck Fuck Better Better Better Better Than More')
+    res.send('Yeah Fuck Fucking Fuckkkkkkkkkk Fuck Fuckkkkkkkkkkkkkkkk Fuck Fuck Better Better Better Better Than More')
 })
 
 //middleware section
