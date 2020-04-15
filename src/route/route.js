@@ -45,7 +45,7 @@ router.get('/hotelbook/users/findid/:id', async(req,res,next) => {
     }
 })
 
-router.put('/hotelbook/users/:id', async(req,res) => {
+router.put('/hotelbook/users/edit/:id', async(req,res) => {
     const update_t= {
         
         number : req.body.number,
