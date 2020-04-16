@@ -52,6 +52,7 @@ router.put('/hotelbook/users/edit/:id', async(req,res) => {
         surname : req.body.surname,
         number : req.body.number,
         id : req.body.id,
+        amount : [req.body.amount],
         amountin : req.body.amountin,
         checkin : req.body.checkin,
         checkout : req.body.checkout,
