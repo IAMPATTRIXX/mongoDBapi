@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         token : {type : String, required : true}
     }],
     
+    amount : [{
+        required : false
+    }],
+    
     amountin : {type : Number, required : false},
     checkin : {type : String, required : false},
     checkout : {type : String, required : false},
