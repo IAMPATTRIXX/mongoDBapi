@@ -7,7 +7,7 @@ const cors = require('cors')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('My Project')
+    res.send('My Project 2')
 })
 
 //middleware section
