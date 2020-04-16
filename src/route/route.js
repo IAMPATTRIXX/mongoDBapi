@@ -76,17 +76,10 @@ router.put('/hotelbook/users/addRoom/:id', async(req,res) => {
 router.put('/hotelbook/users/edit/:id', async(req,res) => {
     const user = req.user;
     const update_t= {
-        
         name : req.body.name,
         surname : req.body.surname,
         number : req.body.number,
         id : req.body.id,
-        amount : user.amount.concat([{
-          amountin : req.body.amountin,
-          checkin : req.body.checkin,
-          checkout : req.body.checkout,
-          room:req.body.room,
-        }]),
         amountin : req.body.amountin,
         checkin : req.body.checkin,
         checkout : req.body.checkout,
