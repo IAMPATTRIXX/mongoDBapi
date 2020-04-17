@@ -45,34 +45,6 @@ router.get('/hotelbook/users/findid/:id', async(req,res,next) => {
     }
 })
 
-router.put('/hotelbook/users/addRoom/:id', async(req,res) => {
-    const user = req.user;
-    const update_t= {
-        
-        amount : user.amount.concat([{
-          amountin : req.body.amountin,
-          checkin : req.body.checkin,
-          checkout : req.body.checkout,
-          room:req.body.room,
-        }]),
-    }
-    try {
-        const t = await User.findByIdAndUpdate(req.params.id,
-          {$push: { amount:{amountin : req.body.amountin,
-                            checkin : req.body.checkin,
-                            checkout : req.body.checkout,
-                            room:req.body.room,} } }
-          , {new: true, upsert:true})
-        if (!t){
-            res.status(404).json({error: ' UPDATE::room not found!!!'})
-        }else{
-        res.status(200).json(t)
-    }
-    } catch (error) {
-        res.status(500).json({error:'UPDATE::'+error.message})
-    }
-})
-
 router.put('/hotelbook/users/edit/:id', async(req,res) => {
     const user = req.user;
     const update_t= {
